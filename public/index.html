@@ -2,265 +2,215 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Mama Strong">
 <title>Mama Strong</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --green: #2D7A5F;
-  --green-light: #E8F5F0;
-  --green-mid: #4A9E7F;
-  --green-dark: #1A5C44;
-  --gold: #C9963A;
-  --gold-light: #FDF6E9;
-  --cream: #FAFAF7;
-  --white: #FFFFFF;
-  --gray-1: #F5F5F2;
-  --gray-2: #E8E8E3;
-  --gray-3: #C4C4BC;
-  --gray-4: #8A8A82;
-  --gray-5: #3A3A35;
-  --text: #1C1C1A;
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
-  --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+  --green:#2D7A5F; --green-light:#E8F5F0; --green-mid:#4A9E7F; --green-dark:#1A5C44;
+  --gold:#C9963A; --gold-light:#FDF6E9;
+  --cream:#FAFAF7; --white:#fff;
+  --g1:#F5F5F2; --g2:#E8E8E3; --g3:#C4C4BC; --g4:#8A8A82; --g5:#3A3A35;
+  --text:#1C1C1A; --red:#DC2626; --red-light:#FEE2E2;
+  --r-md:14px; --r-lg:20px; --r-xl:28px;
+  --sh-sm:0 1px 4px rgba(0,0,0,.06); --sh-md:0 4px 16px rgba(0,0,0,.08);
 }
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;max-width:430px;margin:0 auto;}
 
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+/* SCREENS */
+.screen{display:none;min-height:100vh;}.screen.active{display:block;}
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
-  color: var(--text);
-  min-height: 100vh;
-  max-width: 430px;
-  margin: 0 auto;
-}
+/* SETUP */
+.setup-wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;background:linear-gradient(160deg,var(--green-dark) 0%,var(--green) 55%,var(--green-mid) 100%);}
+.setup-logo{font-size:56px;margin-bottom:1.25rem;}
+.setup-title{font-family:'Lora',serif;font-size:34px;color:white;margin-bottom:8px;text-align:center;}
+.setup-sub{font-size:15px;color:rgba(255,255,255,.72);text-align:center;line-height:1.65;margin-bottom:2.5rem;max-width:300px;}
+.setup-label{font-size:12px;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:14px;letter-spacing:.8px;text-transform:uppercase;}
+.week-picker{display:flex;align-items:center;gap:24px;margin-bottom:8px;}
+.week-adj{width:48px;height:48px;border-radius:50%;border:2px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:white;font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.week-adj:active{background:rgba(255,255,255,.25);}
+.week-num-big{font-family:'Lora',serif;font-size:56px;font-weight:600;color:white;min-width:80px;text-align:center;}
+.tri-badge{font-size:13px;color:rgba(255,255,255,.65);text-align:center;margin-bottom:2rem;}
+.setup-btn{width:100%;max-width:280px;padding:16px;background:white;color:var(--green-dark);border:none;border-radius:50px;font-size:16px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;box-shadow:var(--sh-md);}
 
-/* ── SCREENS ─────────────────────────────── */
-.screen { display: none; min-height: 100vh; }
-.screen.active { display: block; }
+/* APP */
+.app-wrap{padding-bottom:90px;}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 20px 10px;}
+.topbar-logo{font-family:'Lora',serif;font-size:22px;color:var(--green-dark);font-weight:600;}
+.week-chip{display:flex;align-items:center;gap:6px;background:var(--green-light);color:var(--green-dark);padding:6px 14px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;}
 
-/* ── SETUP SCREEN ────────────────────────── */
-.setup-wrap {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1.5rem;
-  background: linear-gradient(160deg, var(--green-dark) 0%, var(--green) 60%, var(--green-mid) 100%);
-}
-.setup-logo { font-size: 56px; margin-bottom: 1.25rem; }
-.setup-title { font-family: 'Lora', serif; font-size: 32px; color: white; margin-bottom: 8px; text-align: center; }
-.setup-sub { font-size: 15px; color: rgba(255,255,255,0.75); text-align: center; line-height: 1.6; margin-bottom: 2.5rem; }
-.setup-label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 14px; letter-spacing: 0.5px; text-transform: uppercase; }
-.week-picker { display: flex; align-items: center; gap: 20px; margin-bottom: 2.5rem; }
-.week-adj { width: 48px; height: 48px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: white; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
-.week-adj:hover { background: rgba(255,255,255,0.2); }
-.week-num { font-family: 'Lora', serif; font-size: 52px; font-weight: 600; color: white; min-width: 80px; text-align: center; }
-.week-label-text { font-size: 13px; color: rgba(255,255,255,0.65); text-align: center; margin-top: -16px; margin-bottom: 16px; }
-.setup-btn { width: 100%; max-width: 280px; padding: 16px; background: white; color: var(--green-dark); border: none; border-radius: 50px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; box-shadow: var(--shadow-lg); }
-.setup-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+/* VERSE */
+.verse-card{margin:0 16px 14px;background:var(--gold-light);border:1px solid rgba(201,150,58,.18);border-radius:var(--r-xl);padding:18px 18px 16px;position:relative;overflow:hidden;}
+.verse-card::before{content:'\201C';position:absolute;top:-8px;left:14px;font-family:'Lora',serif;font-size:72px;color:var(--gold);opacity:.16;line-height:1;pointer-events:none;}
+.verse-eyebrow{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--gold);margin-bottom:8px;}
+.verse-text{font-family:'Lora',serif;font-size:14px;line-height:1.75;color:#5C4A1E;font-style:italic;margin-bottom:8px;}
+.verse-ref{font-size:12px;font-weight:600;color:var(--gold);text-align:right;}
 
-/* ── MAIN APP ─────────────────────────────── */
-.app-wrap { padding-bottom: 90px; }
+/* TAB BAR */
+.tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:white;border-top:1px solid var(--g2);display:flex;padding:8px 0 22px;z-index:100;box-shadow:0 -2px 16px rgba(0,0,0,.06);}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 0;}
+.tab-icon{font-size:22px;transition:transform .15s;}
+.tab-label{font-size:10px;font-weight:500;color:var(--g4);transition:color .15s;}
+.tab.active .tab-label{color:var(--green);font-weight:700;}
+.tab.active .tab-icon{transform:scale(1.12);}
 
-/* TOP BAR */
-.topbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px 12px; }
-.topbar-logo { font-family: 'Lora', serif; font-size: 22px; color: var(--green-dark); font-weight: 600; }
-.week-chip { display: flex; align-items: center; gap: 6px; background: var(--green-light); color: var(--green-dark); padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all 0.15s; }
-.week-chip:hover { background: #d4ede4; }
+/* PANELS */
+.tab-panel{display:none;}.tab-panel.active{display:block;}
+.eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--g4);padding:0 20px 8px;}
 
-/* ── VERSE CARD ───────────────────────────── */
-.verse-card {
-  margin: 0 16px 16px;
-  background: linear-gradient(135deg, var(--gold-light) 0%, #FEF9F0 100%);
-  border: 1px solid rgba(201,150,58,0.2);
-  border-radius: var(--radius-xl);
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
-}
-.verse-card::before {
-  content: '\201C';
-  position: absolute;
-  top: -10px;
-  left: 16px;
-  font-family: 'Lora', serif;
-  font-size: 80px;
-  color: var(--gold);
-  opacity: 0.2;
-  line-height: 1;
-}
-.verse-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 10px; }
-.verse-text { font-family: 'Lora', serif; font-size: 15px; line-height: 1.7; color: #5C4A1E; font-style: italic; margin-bottom: 10px; }
-.verse-ref { font-size: 12px; font-weight: 600; color: var(--gold); text-align: right; }
+/* WEEK PANEL */
+.week-summary{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:0 16px 14px;}
+.sum-pill{background:white;border:1px solid var(--g2);border-radius:var(--r-md);padding:10px 4px;text-align:center;box-shadow:var(--sh-sm);}
+.sum-pill.done{background:var(--green-light);border-color:#A8D9C5;}
+.sum-count{font-size:16px;font-weight:700;color:var(--g5);}
+.sum-pill.done .sum-count{color:var(--green);}
+.sum-name{font-size:9px;color:var(--g4);margin-top:2px;font-weight:500;}
 
-/* ── TABS ─────────────────────────────────── */
-.tab-bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: white; border-top: 1px solid var(--gray-2); display: flex; padding: 8px 0 20px; z-index: 100; box-shadow: 0 -4px 20px rgba(0,0,0,0.06); }
-.tab { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; padding: 6px 0; transition: all 0.15s; }
-.tab-icon { font-size: 22px; }
-.tab-label { font-size: 10px; font-weight: 500; color: var(--gray-4); }
-.tab.active .tab-label { color: var(--green); font-weight: 600; }
-.tab.active .tab-icon { transform: scale(1.1); }
+.day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;padding:0 16px 14px;}
+.day-cell{background:white;border:1.5px solid var(--g2);border-radius:var(--r-md);padding:6px 2px;text-align:center;cursor:pointer;transition:all .12s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;box-shadow:var(--sh-sm);}
+.day-cell:active{transform:scale(.96);}
+.day-cell.today{border-color:var(--green);border-width:2px;}
+.day-cell.done{background:var(--green-light);border-color:#A8D9C5;}
+.day-cell.rest-day{background:var(--g1);}
+.dc-name{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--g4);}
+.dc-emoji{font-size:17px;}
+.dc-type{font-size:9px;font-weight:600;color:var(--g5);line-height:1.2;}
+.dc-today{font-size:9px;color:var(--green);font-weight:700;}
 
-/* ── TAB PANELS ───────────────────────────── */
-.tab-panel { display: none; }
-.tab-panel.active { display: block; }
+.tip-card{margin:0 16px 10px;background:var(--green-light);border-radius:var(--r-lg);padding:14px 16px;}
+.tip-card p{font-size:13px;line-height:1.65;color:var(--green-dark);}
+.tip-card strong{font-weight:600;}
+.restriction-card{margin:0 16px 20px;background:white;border:1px solid var(--g2);border-radius:var(--r-lg);padding:14px 16px;box-shadow:var(--sh-sm);}
+.restriction-title{font-size:12px;font-weight:700;color:var(--g5);margin-bottom:10px;}
+.restriction-row{display:flex;gap:10px;padding:4px 0;font-size:12px;color:var(--g4);line-height:1.5;align-items:flex-start;}
+.rdot{width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:5px;}
 
-/* ── WEEK PANEL ───────────────────────────── */
-.week-summary { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; padding: 0 16px 16px; }
-.summary-pill { background: white; border: 1px solid var(--gray-2); border-radius: var(--radius-md); padding: 12px 6px; text-align: center; box-shadow: var(--shadow-sm); }
-.summary-pill.done { background: var(--green-light); border-color: #A8D9C5; }
-.summary-count { font-size: 18px; font-weight: 700; color: var(--gray-5); }
-.summary-pill.done .summary-count { color: var(--green); }
-.summary-name { font-size: 10px; color: var(--gray-4); margin-top: 3px; font-weight: 500; }
+/* CHECK-IN */
+.checkin-wrap{padding:0 16px;}
+.checkin-title{font-family:'Lora',serif;font-size:22px;color:var(--text);margin-bottom:4px;}
+.checkin-sub{font-size:13px;color:var(--g4);line-height:1.5;margin-bottom:14px;}
+.smart-banner{background:linear-gradient(135deg,var(--green) 0%,var(--green-mid) 100%);border-radius:var(--r-lg);padding:14px 16px;margin-bottom:14px;}
+.smart-eyebrow{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.75);margin-bottom:4px;}
+.smart-text{font-size:14px;color:white;line-height:1.55;font-weight:500;}
 
-.day-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 6px; padding: 0 16px 16px; }
-.day-cell { background: white; border: 1.5px solid var(--gray-2); border-radius: var(--radius-md); padding: 8px 3px; text-align: center; cursor: pointer; transition: all 0.15s; min-height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; box-shadow: var(--shadow-sm); }
-.day-cell:hover { border-color: var(--green); }
-.day-cell.today { border-color: var(--green); border-width: 2px; }
-.day-cell.done { background: var(--green-light); border-color: #A8D9C5; }
-.day-cell.rest { background: var(--gray-1); }
-.day-name { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-4); }
-.day-emoji { font-size: 18px; }
-.day-type-label { font-size: 9px; font-weight: 600; color: var(--gray-5); line-height: 1.2; }
-.day-check { font-size: 12px; color: var(--green); font-weight: 700; }
+.q-card{background:white;border:1px solid var(--g2);border-radius:var(--r-lg);padding:16px;margin-bottom:10px;box-shadow:var(--sh-sm);}
+.q-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.q-hint{font-size:11px;color:var(--g4);margin-bottom:12px;line-height:1.4;}
+.q-opts{display:flex;flex-wrap:wrap;gap:7px;}
+.q-opt{border:1.5px solid var(--g2);border-radius:50px;padding:7px 14px;font-size:13px;cursor:pointer;background:white;color:var(--g5);font-family:'DM Sans',sans-serif;font-weight:500;transition:all .12s;}
+.q-opt:active{transform:scale(.96);}
+.q-opt.selected{background:var(--green);border-color:var(--green);color:white;}
+.gen-btn{width:100%;padding:16px;background:var(--green);color:white;border:none;border-radius:50px;font-size:16px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;box-shadow:0 4px 18px rgba(45,122,95,.3);}
+.gen-btn:disabled{opacity:.38;cursor:not-allowed;box-shadow:none;}
 
-.section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gray-4); padding: 0 20px 10px; }
-
-.tip-card { margin: 0 16px 12px; background: var(--green-light); border-radius: var(--radius-lg); padding: 14px 16px; }
-.tip-card p { font-size: 13px; line-height: 1.6; color: var(--green-dark); }
-.tip-card strong { font-weight: 600; }
-
-.restriction-card { margin: 0 16px 16px; background: white; border: 1px solid var(--gray-2); border-radius: var(--radius-lg); padding: 14px 16px; box-shadow: var(--shadow-sm); }
-.restriction-title { font-size: 12px; font-weight: 700; color: var(--gray-5); margin-bottom: 10px; }
-.restriction-item { display: flex; gap: 10px; padding: 5px 0; font-size: 12px; color: var(--gray-4); line-height: 1.5; align-items: flex-start; }
-.restriction-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); flex-shrink: 0; margin-top: 5px; }
-
-/* ── CHECK-IN PANEL ───────────────────────── */
-.checkin-wrap { padding: 0 16px; }
-.checkin-header { margin-bottom: 16px; }
-.checkin-title { font-family: 'Lora', serif; font-size: 22px; color: var(--text); margin-bottom: 4px; }
-.checkin-sub { font-size: 14px; color: var(--gray-4); line-height: 1.5; }
-
-.suggestion-banner { background: linear-gradient(135deg, var(--green) 0%, var(--green-mid) 100%); border-radius: var(--radius-lg); padding: 14px 16px; margin-bottom: 16px; color: white; }
-.suggestion-banner-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; opacity: 0.8; margin-bottom: 4px; }
-.suggestion-banner-text { font-size: 14px; line-height: 1.5; font-weight: 500; }
-
-.q-block { background: white; border-radius: var(--radius-lg); padding: 16px; margin-bottom: 10px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-2); }
-.q-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 12px; }
-.q-opts { display: flex; flex-wrap: wrap; gap: 8px; }
-.q-opt { border: 1.5px solid var(--gray-2); border-radius: 50px; padding: 7px 14px; font-size: 13px; cursor: pointer; background: white; color: var(--gray-5); transition: all 0.12s; font-family: 'DM Sans', sans-serif; font-weight: 500; }
-.q-opt:hover { border-color: var(--green); color: var(--green); }
-.q-opt.selected { background: var(--green); border-color: var(--green); color: white; }
-
-.gen-btn { width: 100%; padding: 16px; background: var(--green); color: white; border: none; border-radius: 50px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-top: 8px; transition: all 0.15s; box-shadow: 0 4px 20px rgba(45,122,95,0.35); }
-.gen-btn:hover { background: var(--green-dark); transform: translateY(-1px); }
-.gen-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-
-/* ── WORKOUT PANEL ────────────────────────── */
-.workout-wrap { padding: 0 16px; }
-
-.workout-placeholder { text-align: center; padding: 4rem 1rem; }
-.workout-placeholder-icon { font-size: 48px; margin-bottom: 16px; }
-.workout-placeholder h3 { font-family: 'Lora', serif; font-size: 20px; color: var(--text); margin-bottom: 8px; }
-.workout-placeholder p { font-size: 14px; color: var(--gray-4); line-height: 1.6; }
-.go-checkin-btn { margin-top: 20px; display: inline-block; padding: 12px 28px; background: var(--green); color: white; border: none; border-radius: 50px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; }
-
-.loading-wrap { text-align: center; padding: 4rem 1rem; }
-.loader { width: 40px; height: 40px; border: 3px solid var(--green-light); border-top-color: var(--green); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.loading-text { font-family: 'Lora', serif; font-size: 18px; color: var(--text); margin-bottom: 6px; }
-.loading-sub { font-size: 13px; color: var(--gray-4); }
+/* WORKOUT */
+.workout-wrap{padding:0 16px;}
+.workout-placeholder{text-align:center;padding:4rem 1.5rem;}
+.wp-icon{font-size:48px;margin-bottom:14px;}
+.wp-title{font-family:'Lora',serif;font-size:20px;color:var(--text);margin-bottom:8px;}
+.wp-sub{font-size:14px;color:var(--g4);line-height:1.6;}
+.wp-btn{margin-top:20px;display:inline-block;padding:12px 28px;background:var(--green);color:white;border:none;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.loading-wrap{text-align:center;padding:4rem 1rem;}
+.loader{width:38px;height:38px;border:3px solid var(--green-light);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 18px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.load-title{font-family:'Lora',serif;font-size:18px;color:var(--text);margin-bottom:6px;}
+.load-sub{font-size:13px;color:var(--g4);}
 
 /* WORKOUT DISPLAY */
-.workout-hero { border-radius: var(--radius-xl); padding: 24px 20px; margin-bottom: 14px; color: white; position: relative; overflow: hidden; }
-.workout-hero::after { content: ''; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,0.08); }
-.hero-type { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.75; margin-bottom: 6px; }
-.hero-title { font-family: 'Lora', serif; font-size: 24px; font-weight: 600; margin-bottom: 14px; line-height: 1.2; }
-.hero-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-.hero-pill { background: rgba(255,255,255,0.18); border-radius: 50px; padding: 5px 14px; font-size: 12px; font-weight: 600; backdrop-filter: blur(4px); }
+.workout-hero{border-radius:var(--r-xl);padding:24px 20px 22px;margin-bottom:12px;color:white;position:relative;overflow:hidden;}
+.workout-hero::after{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.07);}
+.hero-type{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;opacity:.72;margin-bottom:5px;}
+.hero-title{font-family:'Lora',serif;font-size:24px;font-weight:600;margin-bottom:14px;line-height:1.2;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;}
+.hero-pill{background:rgba(255,255,255,.17);border-radius:50px;padding:5px 13px;font-size:12px;font-weight:600;}
 
-.workout-section { background: white; border-radius: var(--radius-lg); margin-bottom: 10px; overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-2); }
-.workout-section-header { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--gray-2); }
-.section-icon-circle { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-.ic-warmup { background: #FEF3C7; }
-.ic-main { background: #DBEAFE; }
-.ic-cool { background: #EDE9FE; }
-.ic-safety { background: #FEE2E2; }
-.section-name { font-size: 14px; font-weight: 700; color: var(--text); }
-.section-dur { font-size: 12px; color: var(--gray-4); margin-top: 1px; }
-.workout-section-body { padding: 12px 16px; }
+.wo-section{background:white;border-radius:var(--r-lg);margin-bottom:10px;overflow:hidden;box-shadow:var(--sh-sm);border:1px solid var(--g2);}
+.wo-sec-header{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--g2);}
+.sec-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.si-warm{background:#FEF3C7;} .si-main{background:#DBEAFE;} .si-cool{background:#EDE9FE;}
+.si-safety{background:var(--red-light);} .si-nourish{background:#FEF3C7;}
+.si-body{background:#DBEAFE;} .si-pelvis{background:#FCE7F3;} .si-mind{background:#EDE9FE;}
+.sec-name{font-size:14px;font-weight:700;color:var(--text);}
+.sec-dur{font-size:12px;color:var(--g4);margin-top:1px;}
+.wo-sec-body{padding:12px 16px;}
 
-.ex-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--gray-1); align-items: flex-start; }
-.ex-item:last-child { border-bottom: none; padding-bottom: 0; }
-.ex-num { width: 28px; height: 28px; border-radius: 50%; background: var(--green-light); color: var(--green-dark); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-.ex-body { flex: 1; }
-.ex-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-.ex-sets { font-size: 12px; font-weight: 600; color: var(--green); margin-bottom: 4px; }
-.ex-note { font-size: 12px; color: var(--gray-4); line-height: 1.55; }
+/* EXERCISE */
+.ex-item{border-bottom:1px solid var(--g1);padding:12px 0;}
+.ex-item:last-child{border-bottom:none;padding-bottom:0;}
+.ex-top{display:flex;gap:12px;align-items:flex-start;}
+.ex-num{width:28px;height:28px;border-radius:50%;background:var(--green-light);color:var(--green-dark);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.ex-body{flex:1;}
+.ex-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.ex-sets{font-size:12px;font-weight:600;color:var(--green);margin-bottom:3px;}
+.ex-note{font-size:12px;color:var(--g4);line-height:1.55;}
+.ex-alt-btn{margin-top:7px;font-size:11px;font-weight:600;color:var(--green);background:none;border:none;cursor:pointer;padding:0;font-family:'DM Sans',sans-serif;text-decoration:underline;text-underline-offset:2px;}
+.ex-alt-row{margin-top:8px;padding:10px 12px;background:var(--g1);border-radius:10px;display:none;}
+.ex-alt-row.open{display:block;}
+.ex-alt-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--green);margin-bottom:4px;}
+.ex-alt-text{font-size:12px;color:var(--g5);line-height:1.55;}
 
-.bullet-row { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--gray-1); align-items: flex-start; font-size: 13px; color: var(--gray-5); line-height: 1.55; }
-.bullet-row:last-child { border-bottom: none; padding-bottom: 0; }
-.bullet-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; margin-top: 5px; }
+.bullet-row{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid var(--g1);align-items:flex-start;font-size:13px;color:var(--g5);line-height:1.55;}
+.bullet-row:last-child{border-bottom:none;padding-bottom:0;}
+.bdot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:5px;}
+.safety-row{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid var(--g1);align-items:flex-start;}
+.safety-row:last-child{border-bottom:none;padding-bottom:0;}
+.snum{width:22px;height:22px;border-radius:50%;background:var(--red-light);color:var(--red);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.stext{font-size:13px;color:var(--g5);line-height:1.55;}
 
-.safety-row { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--gray-1); align-items: flex-start; }
-.safety-row:last-child { border-bottom: none; padding-bottom: 0; }
-.safety-num { width: 24px; height: 24px; border-radius: 50%; background: #FEE2E2; color: #DC2626; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-.safety-text { font-size: 13px; color: var(--gray-5); line-height: 1.55; }
+.sport-card{background:linear-gradient(135deg,#D97706,#B45309);border-radius:var(--r-xl);padding:24px 20px;color:white;margin-bottom:12px;}
+.sport-title{font-family:'Lora',serif;font-size:22px;margin-bottom:6px;}
+.sport-sub{font-size:13px;opacity:.85;line-height:1.5;margin-bottom:16px;}
+.sport-tips{background:rgba(255,255,255,.15);border-radius:var(--r-md);padding:12px 14px;}
+.sport-tip{font-size:12px;line-height:1.6;opacity:.9;padding:3px 0;}
 
-.complete-btn { width: 100%; padding: 16px; background: transparent; color: var(--green); border: 2px solid var(--green); border-radius: 50px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-top: 12px; transition: all 0.15s; }
-.complete-btn:hover { background: var(--green-light); }
+.log-btn{width:100%;padding:14px;background:var(--green-light);color:var(--green-dark);border:2px solid var(--green);border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:10px;}
+.complete-btn{width:100%;padding:15px;background:transparent;color:var(--green);border:2px solid var(--green);border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:10px;transition:background .15s;}
+.complete-btn:hover{background:var(--green-light);}
 
-/* ── SETTINGS PANEL ───────────────────────── */
-.settings-wrap { padding: 0 16px; }
-.settings-section { background: white; border-radius: var(--radius-lg); margin-bottom: 12px; overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-2); }
-.settings-row { display: flex; align-items: center; justify-content: space-between; padding: 16px; border-bottom: 1px solid var(--gray-1); }
-.settings-row:last-child { border-bottom: none; }
-.settings-row-label { font-size: 14px; font-weight: 500; color: var(--text); }
-.settings-row-sub { font-size: 12px; color: var(--gray-4); margin-top: 2px; }
-.settings-action { font-size: 13px; font-weight: 600; color: var(--green); cursor: pointer; flex-shrink: 0; margin-left: 12px; }
-.settings-action.danger { color: #DC2626; }
+/* SETTINGS */
+.settings-wrap{padding:0 16px;}
+.settings-section{background:white;border-radius:var(--r-lg);margin-bottom:12px;overflow:hidden;box-shadow:var(--sh-sm);border:1px solid var(--g2);}
+.settings-row{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid var(--g1);}
+.settings-row:last-child{border-bottom:none;}
+.sr-label{font-size:14px;font-weight:500;}
+.sr-sub{font-size:12px;color:var(--g4);margin-top:2px;}
+.sr-action{font-size:13px;font-weight:600;color:var(--green);cursor:pointer;flex-shrink:0;margin-left:12px;}
+.sr-action.danger{color:var(--red);}
 
-/* ── MODAL ────────────────────────────────── */
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 200; align-items: flex-end; justify-content: center; }
-.modal-overlay.open { display: flex; }
-.modal-sheet { background: white; border-radius: 24px 24px 0 0; padding: 24px 20px 40px; width: 100%; max-width: 430px; }
-.modal-handle { width: 36px; height: 4px; background: var(--gray-2); border-radius: 2px; margin: 0 auto 20px; }
-.modal-title { font-family: 'Lora', serif; font-size: 20px; margin-bottom: 6px; }
-.modal-sub { font-size: 13px; color: var(--gray-4); margin-bottom: 24px; line-height: 1.5; }
-.modal-week-picker { display: flex; align-items: center; justify-content: center; gap: 24px; margin-bottom: 24px; }
-.modal-week-num { font-family: 'Lora', serif; font-size: 48px; font-weight: 600; color: var(--text); min-width: 70px; text-align: center; }
-.modal-btns { display: flex; gap: 10px; }
-.modal-cancel { flex: 1; padding: 14px; border: 1.5px solid var(--gray-2); background: none; border-radius: 50px; font-size: 15px; cursor: pointer; font-family: 'DM Sans', sans-serif; color: var(--gray-5); }
-.modal-save { flex: 2; padding: 14px; background: var(--green); color: white; border: none; border-radius: 50px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:200;align-items:flex-end;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal-sheet{background:white;border-radius:24px 24px 0 0;padding:20px 20px 44px;width:100%;max-width:430px;}
+.modal-handle{width:36px;height:4px;background:var(--g2);border-radius:2px;margin:0 auto 18px;}
+.modal-title{font-family:'Lora',serif;font-size:20px;margin-bottom:5px;}
+.modal-sub{font-size:13px;color:var(--g4);margin-bottom:22px;line-height:1.5;}
+.modal-week-row{display:flex;align-items:center;justify-content:center;gap:24px;margin-bottom:22px;}
+.modal-week-num{font-family:'Lora',serif;font-size:52px;font-weight:600;color:var(--text);min-width:72px;text-align:center;}
+.modal-btns{display:flex;gap:10px;}
+.modal-cancel{flex:1;padding:14px;border:1.5px solid var(--g2);background:none;border-radius:50px;font-size:15px;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--g5);}
+.modal-save{flex:2;padding:14px;background:var(--green);color:white;border:none;border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
 </style>
 </head>
 <body>
 
-<!-- SETUP SCREEN -->
+<!-- SETUP -->
 <div class="screen active" id="screen-setup">
   <div class="setup-wrap">
     <div class="setup-logo">🌿</div>
     <h1 class="setup-title">Mama Strong</h1>
-    <p class="setup-sub">Adaptive prenatal fitness designed around how you feel each day — guided by grace and science.</p>
+    <p class="setup-sub">Adaptive prenatal fitness — guided by how you feel each day, grounded in grace and science.</p>
     <div class="setup-label">What week of pregnancy are you in?</div>
     <div class="week-picker">
-      <button class="week-adj" onclick="adjustSetupWeek(-1)">−</button>
-      <div class="week-num" id="setup-week-num">6</div>
-      <button class="week-adj" onclick="adjustSetupWeek(1)">+</button>
+      <button class="week-adj" onclick="adjSetup(-1)">−</button>
+      <div class="week-num-big" id="setup-wk">6</div>
+      <button class="week-adj" onclick="adjSetup(1)">+</button>
     </div>
-    <div class="week-label-text" id="setup-trimester-label">First trimester</div>
+    <div class="tri-badge" id="setup-tri">First trimester</div>
     <button class="setup-btn" onclick="startApp()">Begin your journey →</button>
   </div>
 </div>
@@ -268,155 +218,161 @@ body {
 <!-- MAIN APP -->
 <div class="screen" id="screen-app">
   <div class="app-wrap">
-
-    <!-- TOP BAR -->
     <div class="topbar">
       <div class="topbar-logo">Mama Strong</div>
-      <button class="week-chip" onclick="openWeekModal()">🌿 <span id="week-chip-label">Week 6</span> ▾</button>
+      <button class="week-chip" onclick="openModal()">🌿 <span id="wk-chip">Week 6</span> ▾</button>
     </div>
 
-    <!-- VERSE OF THE DAY -->
-    <div class="verse-card" id="verse-card">
-      <div class="verse-label">✦ Verse of the Day</div>
+    <div class="verse-card">
+      <div class="verse-eyebrow">✦ Verse of the Day</div>
       <div class="verse-text" id="verse-text"></div>
       <div class="verse-ref" id="verse-ref"></div>
     </div>
 
-    <!-- TAB PANELS -->
+    <!-- WEEK PANEL -->
     <div class="tab-panel active" id="panel-week">
-      <div class="section-title">This Week</div>
+      <div class="eyebrow">This Week</div>
       <div class="week-summary" id="week-summary"></div>
-      <div class="section-title">Daily Plan</div>
+      <div class="eyebrow">Daily Plan</div>
       <div class="day-grid" id="day-grid"></div>
-      <div class="section-title">Today's Note</div>
+      <div class="eyebrow">Today's Note</div>
       <div class="tip-card" id="tip-card"></div>
       <div class="restriction-card" id="restriction-card"></div>
     </div>
 
+    <!-- CHECK-IN PANEL -->
     <div class="tab-panel" id="panel-checkin">
       <div class="checkin-wrap">
-        <div class="checkin-header">
-          <h2 class="checkin-title">Daily Check-in</h2>
-          <p class="checkin-sub">Answer honestly — your workout adapts to you.</p>
+        <h2 class="checkin-title">Daily Check-in</h2>
+        <p class="checkin-sub">Help us understand how you feel so your workout fits you perfectly today.</p>
+        <div class="smart-banner">
+          <div class="smart-eyebrow">📅 Today's Smart Plan</div>
+          <div class="smart-text" id="smart-text">Loading...</div>
         </div>
-        <div class="suggestion-banner" id="suggestion-banner">
-          <div class="suggestion-banner-label">📅 Today's Suggestion</div>
-          <div class="suggestion-banner-text" id="suggestion-text">Loading your plan...</div>
-        </div>
-        <div class="q-block">
-          <div class="q-title">Energy right now?</div>
+
+        <div class="q-card">
+          <div class="q-title">How's your energy today?</div>
+          <div class="q-hint">The #1 factor in how intense your session should be.</div>
           <div class="q-opts">
-            <button class="q-opt" onclick="sel(this,'energy','drained')">😴 Drained</button>
+            <button class="q-opt" onclick="sel(this,'energy','exhausted')">😴 Exhausted</button>
             <button class="q-opt" onclick="sel(this,'energy','low')">🔋 Low</button>
             <button class="q-opt" onclick="sel(this,'energy','moderate')">⚡ Moderate</button>
-            <button class="q-opt" onclick="sel(this,'energy','great')">🌟 Great</button>
+            <button class="q-opt" onclick="sel(this,'energy','great')">🌟 Energized</button>
           </div>
         </div>
-        <div class="q-block">
-          <div class="q-title">Nausea today?</div>
+
+        <div class="q-card">
+          <div class="q-title">Any nausea today?</div>
+          <div class="q-hint">Strong nausea means we keep everything low, slow, and grounded.</div>
           <div class="q-opts">
-            <button class="q-opt" onclick="sel(this,'nausea','none')">None</button>
+            <button class="q-opt" onclick="sel(this,'nausea','none')">None ✓</button>
             <button class="q-opt" onclick="sel(this,'nausea','mild')">Mild</button>
             <button class="q-opt" onclick="sel(this,'nausea','moderate')">Moderate</button>
             <button class="q-opt" onclick="sel(this,'nausea','strong')">Strong</button>
           </div>
         </div>
-        <div class="q-block">
-          <div class="q-title">Soreness or tightness?</div>
+
+        <div class="q-card">
+          <div class="q-title">Any pelvic pressure or heaviness?</div>
+          <div class="q-hint">A feeling of pressure or weight low down signals we avoid impact and heavy loading today.</div>
           <div class="q-opts">
-            <button class="q-opt" onclick="sel(this,'soreness','none')">None</button>
-            <button class="q-opt" onclick="sel(this,'soreness','mild')">Mild</button>
-            <button class="q-opt" onclick="sel(this,'soreness','moderate')">Moderate</button>
-            <button class="q-opt" onclick="sel(this,'soreness','sore')">Very sore</button>
+            <button class="q-opt" onclick="sel(this,'pelvic','none')">None ✓</button>
+            <button class="q-opt" onclick="sel(this,'pelvic','mild')">Mild</button>
+            <button class="q-opt" onclick="sel(this,'pelvic','moderate')">Moderate</button>
+            <button class="q-opt" onclick="sel(this,'pelvic','strong')">Strong</button>
           </div>
         </div>
-        <div class="q-block">
-          <div class="q-title">What sounds good today?</div>
+
+        <div class="q-card">
+          <div class="q-title">How did you sleep last night?</div>
+          <div class="q-hint">Sleep quality directly shapes how hard you can safely train today.</div>
+          <div class="q-opts">
+            <button class="q-opt" onclick="sel(this,'sleep','poor')">😖 Poor</button>
+            <button class="q-opt" onclick="sel(this,'sleep','broken')">🌙 Broken</button>
+            <button class="q-opt" onclick="sel(this,'sleep','okay')">😐 Okay</button>
+            <button class="q-opt" onclick="sel(this,'sleep','good')">😴 Good</button>
+          </div>
+        </div>
+
+        <div class="q-card">
+          <div class="q-title">How's your mood?</div>
+          <div class="q-hint">Prenatal emotions are real and valid. Your workout will meet you where you are.</div>
+          <div class="q-opts">
+            <button class="q-opt" onclick="sel(this,'mood','low')">😔 Low</button>
+            <button class="q-opt" onclick="sel(this,'mood','anxious')">😰 Anxious</button>
+            <button class="q-opt" onclick="sel(this,'mood','okay')">😐 Okay</button>
+            <button class="q-opt" onclick="sel(this,'mood','good')">😊 Good</button>
+            <button class="q-opt" onclick="sel(this,'mood','great')">🥰 Great</button>
+          </div>
+        </div>
+
+        <div class="q-card">
+          <div class="q-title">What feels right today?</div>
+          <div class="q-hint">Your instincts matter. We'll balance your preference with what your body needs this week.</div>
           <div class="q-opts">
             <button class="q-opt" onclick="sel(this,'preference','strength')">💪 Strength</button>
-            <button class="q-opt" onclick="sel(this,'preference','yoga')">🧘 Yoga</button>
-            <button class="q-opt" onclick="sel(this,'preference','walk')">🚶 Walk/Ruck</button>
             <button class="q-opt" onclick="sel(this,'preference','swim')">🏊 Swim</button>
-            <button class="q-opt" onclick="sel(this,'preference','tennis')">🎾 Tennis</button>
+            <button class="q-opt" onclick="sel(this,'preference','walk')">🚶 Walk/Run</button>
+            <button class="q-opt" onclick="sel(this,'preference','yoga')">🧘 Yoga</button>
             <button class="q-opt" onclick="sel(this,'preference','rest')">😌 Rest</button>
+            <button class="q-opt" onclick="sel(this,'preference','open')">✨ Surprise me</button>
           </div>
         </div>
-        <div class="q-block">
-          <div class="q-title">Any focus or notes?</div>
-          <div class="q-opts">
-            <button class="q-opt" onclick="sel(this,'focus','gentle')">Keep it gentle</button>
-            <button class="q-opt" onclick="sel(this,'focus','challenge')">Push a bit</button>
-            <button class="q-opt" onclick="sel(this,'focus','lower')">Lower body</button>
-            <button class="q-opt" onclick="sel(this,'focus','upper')">Upper body</button>
-            <button class="q-opt" onclick="sel(this,'focus','core')">Core-safe</button>
-          </div>
-        </div>
+
         <button class="gen-btn" id="gen-btn" onclick="generateWorkout()" disabled>Generate today's workout →</button>
       </div>
     </div>
 
+    <!-- WORKOUT PANEL -->
     <div class="tab-panel" id="panel-workout">
       <div class="workout-wrap">
-        <div id="workout-placeholder" class="workout-placeholder">
-          <div class="workout-placeholder-icon">⚡</div>
-          <h3>No workout yet</h3>
-          <p>Complete your daily check-in and we'll build a personalized workout just for you.</p>
-          <button class="go-checkin-btn" onclick="switchTab('checkin')">Go to Check-in →</button>
+        <div id="wo-placeholder" class="workout-placeholder">
+          <div class="wp-icon">⚡</div>
+          <h3 class="wp-title">No workout yet today</h3>
+          <p class="wp-sub">Complete your check-in and we'll build a personalized workout just for you.</p>
+          <button class="wp-btn" onclick="switchTab('checkin')">Go to Check-in →</button>
         </div>
-        <div id="workout-loading" class="loading-wrap" style="display:none;">
+        <div id="wo-loading" class="loading-wrap" style="display:none;">
           <div class="loader"></div>
-          <div class="loading-text">Building your workout…</div>
-          <div class="loading-sub">Tailoring it to how you feel today</div>
+          <div class="load-title">Building your workout…</div>
+          <div class="load-sub">Tailoring it to how you feel today</div>
         </div>
-        <div id="workout-output" style="display:none;"></div>
+        <div id="wo-output" style="display:none;"></div>
       </div>
     </div>
 
+    <!-- SETTINGS PANEL -->
     <div class="tab-panel" id="panel-settings">
       <div class="settings-wrap">
         <div class="settings-section">
           <div class="settings-row">
-            <div><div class="settings-row-label">Pregnancy week</div><div class="settings-row-sub" id="settings-week-sub">Week 6 · First trimester</div></div>
-            <span class="settings-action" onclick="openWeekModal()">Change</span>
+            <div><div class="sr-label">Pregnancy week</div><div class="sr-sub" id="settings-wk-sub">Week 6 · First trimester</div></div>
+            <span class="sr-action" onclick="openModal()">Change</span>
           </div>
           <div class="settings-row">
-            <div><div class="settings-row-label">Weekly template</div><div class="settings-row-sub">2 strength · 1 yoga · 1–2 active · 1 swim</div></div>
+            <div><div class="sr-label">Weekly goals</div><div class="sr-sub">2 strength · 2 cardio/swim · 1 yoga</div></div>
           </div>
         </div>
         <div class="settings-section">
           <div class="settings-row">
-            <div><div class="settings-row-label">Reset this week</div><div class="settings-row-sub">Clear all completed workouts</div></div>
-            <span class="settings-action danger" onclick="resetWeek()">Reset</span>
+            <div><div class="sr-label">Reset this week</div><div class="sr-sub">Clear all completed workouts</div></div>
+            <span class="sr-action danger" onclick="resetWeek()">Reset</span>
           </div>
           <div class="settings-row">
-            <div><div class="settings-row-label">Clear today's workout</div><div class="settings-row-sub">Remove current generated workout</div></div>
-            <span class="settings-action danger" onclick="clearWorkout()">Clear</span>
+            <div><div class="sr-label">Clear today's workout</div><div class="sr-sub">Remove the current generated workout</div></div>
+            <span class="sr-action danger" onclick="clearWorkout()">Clear</span>
           </div>
         </div>
         <div class="restriction-card" id="settings-restrictions"></div>
       </div>
     </div>
-
   </div>
 
-  <!-- TAB BAR -->
   <div class="tab-bar">
-    <div class="tab active" id="tab-week" onclick="switchTab('week')">
-      <div class="tab-icon">📅</div>
-      <div class="tab-label">Week</div>
-    </div>
-    <div class="tab" id="tab-checkin" onclick="switchTab('checkin')">
-      <div class="tab-icon">✏️</div>
-      <div class="tab-label">Check-in</div>
-    </div>
-    <div class="tab" id="tab-workout" onclick="switchTab('workout')">
-      <div class="tab-icon">⚡</div>
-      <div class="tab-label">Workout</div>
-    </div>
-    <div class="tab" id="tab-settings" onclick="switchTab('settings')">
-      <div class="tab-icon">⚙️</div>
-      <div class="tab-label">Settings</div>
-    </div>
+    <div class="tab active" id="tab-week" onclick="switchTab('week')"><div class="tab-icon">📅</div><div class="tab-label">Week</div></div>
+    <div class="tab" id="tab-checkin" onclick="switchTab('checkin')"><div class="tab-icon">✏️</div><div class="tab-label">Check-in</div></div>
+    <div class="tab" id="tab-workout" onclick="switchTab('workout')"><div class="tab-icon">⚡</div><div class="tab-label">Workout</div></div>
+    <div class="tab" id="tab-settings" onclick="switchTab('settings')"><div class="tab-icon">⚙️</div><div class="tab-label">Settings</div></div>
   </div>
 </div>
 
@@ -425,492 +381,457 @@ body {
   <div class="modal-sheet">
     <div class="modal-handle"></div>
     <div class="modal-title">Update pregnancy week</div>
-    <div class="modal-sub">Safety guidelines and workout suggestions update automatically based on your week.</div>
-    <div class="modal-week-picker">
-      <button class="week-adj" onclick="adjustModalWeek(-1)">−</button>
-      <div class="modal-week-num" id="modal-week-num">6</div>
-      <button class="week-adj" onclick="adjustModalWeek(1)">+</button>
+    <div class="modal-sub">Safety guidelines and workout plans update automatically.</div>
+    <div class="modal-week-row">
+      <button class="week-adj" onclick="adjModal(-1)">−</button>
+      <div class="modal-week-num" id="modal-wk">6</div>
+      <button class="week-adj" onclick="adjModal(1)">+</button>
     </div>
     <div class="modal-btns">
-      <button class="modal-cancel" onclick="closeWeekModal()">Cancel</button>
+      <button class="modal-cancel" onclick="closeModal()">Cancel</button>
       <button class="modal-save" onclick="saveWeek()">Save</button>
     </div>
   </div>
 </div>
 
 <script>
-// ── BIBLE VERSES ─────────────────────────────────────────────────────────────
+// ─── 100 BIBLE VERSES ────────────────────────────────────────────────────────
 const VERSES = [
-  { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", ref: "Jeremiah 29:11" },
-  { text: "She is clothed with strength and dignity, and she laughs without fear of the future.", ref: "Proverbs 31:25" },
-  { text: "I can do all this through him who gives me strength.", ref: "Philippians 4:13" },
-  { text: "You formed my inward parts; you knitted me together in my mother's womb. I praise you, for I am fearfully and wonderfully made.", ref: "Psalm 139:13–14" },
-  { text: "The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you; in his love he will no longer rebuke you, but will rejoice over you with singing.", ref: "Zephaniah 3:17" },
-  { text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds.", ref: "Philippians 4:6–7" },
-  { text: "But they who wait for the Lord shall renew their strength; they shall mount up with wings like eagles; they shall run and not be weary; they shall walk and not faint.", ref: "Isaiah 40:31" },
-  { text: "Before I formed you in the womb I knew you, before you were born I set you apart.", ref: "Jeremiah 1:5" },
-  { text: "Children are a heritage from the Lord, offspring a reward from him.", ref: "Psalm 127:3" },
-  { text: "The Lord is my strength and my shield; my heart trusts in him, and he helps me. My heart leaps for joy, and with my song I praise him.", ref: "Psalm 28:7" },
-  { text: "Cast all your anxiety on him because he cares for you.", ref: "1 Peter 5:7" },
-  { text: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.", ref: "Joshua 1:9" },
-  { text: "He gives strength to the weary and increases the power of the weak.", ref: "Isaiah 40:29" },
-  { text: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.", ref: "Proverbs 3:5–6" },
-  { text: "The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you; the Lord turn his face toward you and give you peace.", ref: "Numbers 6:24–26" },
-  { text: "See, I am doing a new thing! Now it springs up; do you not perceive it? I am making a way in the wilderness and streams in the wasteland.", ref: "Isaiah 43:19" },
-  { text: "For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.", ref: "Ephesians 2:10" },
-  { text: "She gives birth to her children without fear, for she has the Lord beside her.", ref: "Inspired by Isaiah 26:3" },
-  { text: "The Lord is close to the brokenhearted and saves those who are crushed in spirit.", ref: "Psalm 34:18" },
-  { text: "Your hands made me and formed me; give me understanding to learn your commands.", ref: "Psalm 119:73" },
-  { text: "Even to your old age and gray hairs I am he, I am he who will sustain you. I have made you and I will carry you; I will sustain you and I will rescue you.", ref: "Isaiah 46:4" },
-  { text: "How precious to me are your thoughts, God! How vast is the sum of them! Were I to count them, they would outnumber the grains of sand.", ref: "Psalm 139:17–18" },
-  { text: "A woman giving birth to a child has pain because her time has come; but when her baby is born she forgets the anguish because of her joy.", ref: "John 16:21" },
-  { text: "May the God of hope fill you with all joy and peace as you trust in him, so that you may overflow with hope by the power of the Holy Spirit.", ref: "Romans 15:13" },
-  { text: "The Lord himself goes before you and will be with you; he will never leave you nor forsake you. Do not be afraid; do not be discouraged.", ref: "Deuteronomy 31:8" },
-  { text: "For nothing will be impossible with God.", ref: "Luke 1:37" },
-  { text: "Strength and honor are her clothing; She shall rejoice in time to come.", ref: "Proverbs 31:25" },
-  { text: "Every good and perfect gift is from above, coming down from the Father of the heavenly lights, who does not change like shifting shadows.", ref: "James 1:17" },
-  { text: "I praise you because I am fearfully and wonderfully made; your works are wonderful, I know that full well.", ref: "Psalm 139:14" },
-  { text: "Come to me, all you who are weary and burdened, and I will give you rest.", ref: "Matthew 11:28" },
-  { text: "The Lord will watch over your coming and going both now and forevermore.", ref: "Psalm 121:8" },
-  { text: "She is more precious than rubies; nothing you desire can compare with her.", ref: "Proverbs 3:15" },
-  { text: "For God has not given us a spirit of fear, but of power and of love and of a sound mind.", ref: "2 Timothy 1:7" },
-  { text: "Lo, children are a heritage of the Lord: and the fruit of the womb is his reward.", ref: "Psalm 127:3" },
-  { text: "The Lord is my shepherd, I lack nothing. He makes me lie down in green pastures, he leads me beside quiet waters, he refreshes my soul.", ref: "Psalm 23:1–3" },
-  { text: "And we know that in all things God works for the good of those who love him, who have been called according to his purpose.", ref: "Romans 8:28" },
-  { text: "Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid.", ref: "John 14:27" },
-  { text: "The Lord your God is in your midst, a mighty one who will save; he will rejoice over you with gladness; he will quiet you by his love.", ref: "Zephaniah 3:17" },
-  { text: "I have set the Lord always before me; because he is at my right hand, I shall not be shaken.", ref: "Psalm 16:8" },
-  { text: "Blessed is she who has believed that the Lord would fulfill his promises to her!", ref: "Luke 1:45" },
+  {t:"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.",r:"Jeremiah 29:11"},
+  {t:"She is clothed with strength and dignity, and she laughs without fear of the future.",r:"Proverbs 31:25"},
+  {t:"I can do all this through him who gives me strength.",r:"Philippians 4:13"},
+  {t:"You formed my inward parts; you knitted me together in my mother's womb. I praise you, for I am fearfully and wonderfully made.",r:"Psalm 139:13–14"},
+  {t:"The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you; in his love he will rejoice over you with singing.",r:"Zephaniah 3:17"},
+  {t:"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds.",r:"Philippians 4:6–7"},
+  {t:"But they who wait for the Lord shall renew their strength; they shall mount up with wings like eagles; they shall run and not be weary; they shall walk and not faint.",r:"Isaiah 40:31"},
+  {t:"Before I formed you in the womb I knew you, before you were born I set you apart.",r:"Jeremiah 1:5"},
+  {t:"Children are a heritage from the Lord, offspring a reward from him.",r:"Psalm 127:3"},
+  {t:"The Lord is my strength and my shield; my heart trusts in him, and he helps me. My heart leaps for joy.",r:"Psalm 28:7"},
+  {t:"Cast all your anxiety on him because he cares for you.",r:"1 Peter 5:7"},
+  {t:"Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.",r:"Joshua 1:9"},
+  {t:"He gives strength to the weary and increases the power of the weak.",r:"Isaiah 40:29"},
+  {t:"Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.",r:"Proverbs 3:5–6"},
+  {t:"The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you; the Lord turn his face toward you and give you peace.",r:"Numbers 6:24–26"},
+  {t:"See, I am doing a new thing! Now it springs up; do you not perceive it? I am making a way in the wilderness and streams in the wasteland.",r:"Isaiah 43:19"},
+  {t:"For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.",r:"Ephesians 2:10"},
+  {t:"The Lord is close to the brokenhearted and saves those who are crushed in spirit.",r:"Psalm 34:18"},
+  {t:"Even to your old age and gray hairs I am he, I am he who will sustain you. I have made you and I will carry you.",r:"Isaiah 46:4"},
+  {t:"How precious to me are your thoughts, God! How vast is the sum of them! Were I to count them, they would outnumber the grains of sand.",r:"Psalm 139:17–18"},
+  {t:"A woman giving birth to a child has pain because her time has come; but when her baby is born she forgets the anguish because of her joy.",r:"John 16:21"},
+  {t:"May the God of hope fill you with all joy and peace as you trust in him, so that you may overflow with hope by the power of the Holy Spirit.",r:"Romans 15:13"},
+  {t:"The Lord himself goes before you and will be with you; he will never leave you nor forsake you. Do not be afraid; do not be discouraged.",r:"Deuteronomy 31:8"},
+  {t:"For nothing will be impossible with God.",r:"Luke 1:37"},
+  {t:"Every good and perfect gift is from above, coming down from the Father of the heavenly lights, who does not change like shifting shadows.",r:"James 1:17"},
+  {t:"Come to me, all you who are weary and burdened, and I will give you rest.",r:"Matthew 11:28"},
+  {t:"The Lord will watch over your coming and going both now and forevermore.",r:"Psalm 121:8"},
+  {t:"For God has not given us a spirit of fear, but of power and of love and of a sound mind.",r:"2 Timothy 1:7"},
+  {t:"The Lord is my shepherd, I lack nothing. He makes me lie down in green pastures, he leads me beside quiet waters, he refreshes my soul.",r:"Psalm 23:1–3"},
+  {t:"And we know that in all things God works for the good of those who love him, who have been called according to his purpose.",r:"Romans 8:28"},
+  {t:"Peace I leave with you; my peace I give you. Do not let your hearts be troubled and do not be afraid.",r:"John 14:27"},
+  {t:"I have set the Lord always before me; because he is at my right hand, I shall not be shaken.",r:"Psalm 16:8"},
+  {t:"Blessed is she who has believed that the Lord would fulfill his promises to her!",r:"Luke 1:45"},
+  {t:"She opens her mouth with wisdom, and the teaching of kindness is on her tongue.",r:"Proverbs 31:26"},
+  {t:"The Lord is my light and my salvation — whom shall I fear? The Lord is the stronghold of my life — of whom shall I be afraid?",r:"Psalm 27:1"},
+  {t:"Therefore do not worry about tomorrow, for tomorrow will worry about itself. Each day has enough trouble of its own.",r:"Matthew 6:34"},
+  {t:"He will cover you with his feathers, and under his wings you will find refuge; his faithfulness will be your shield.",r:"Psalm 91:4"},
+  {t:"The Lord gives strength to his people; the Lord blesses his people with peace.",r:"Psalm 29:11"},
+  {t:"Your hands made me and formed me; give me understanding to learn your commands.",r:"Psalm 119:73"},
+  {t:"Blessed are those who trust in the Lord, whose trust is the Lord. They shall be like a tree planted by water.",r:"Jeremiah 17:7–8"},
+  {t:"The steadfast love of the Lord never ceases; his mercies never come to an end; they are new every morning; great is your faithfulness.",r:"Lamentations 3:22–23"},
+  {t:"For you are my hiding place; you protect me from trouble. You surround me with songs of victory.",r:"Psalm 32:7"},
+  {t:"I praise you because I am fearfully and wonderfully made; your works are wonderful, I know that full well.",r:"Psalm 139:14"},
+  {t:"The Lord is good, a refuge in times of trouble. He cares for those who trust in him.",r:"Nahum 1:7"},
+  {t:"When I am afraid, I put my trust in you. In God, whose word I praise, in God I trust; I shall not be afraid.",r:"Psalm 56:3–4"},
+  {t:"Now to him who is able to do immeasurably more than all we ask or imagine, according to his power that is at work within us.",r:"Ephesians 3:20"},
+  {t:"Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.",r:"Galatians 6:9"},
+  {t:"My flesh and my heart may fail, but God is the strength of my heart and my portion forever.",r:"Psalm 73:26"},
+  {t:"He heals the brokenhearted and binds up their wounds.",r:"Psalm 147:3"},
+  {t:"The Lord has done great things for us, and we are filled with joy.",r:"Psalm 126:3"},
+  {t:"But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, self-control.",r:"Galatians 5:22–23"},
+  {t:"You will keep in perfect peace those whose minds are steadfast, because they trust in you.",r:"Isaiah 26:3"},
+  {t:"For I am the Lord your God who takes hold of your right hand and says to you, Do not fear; I will help you.",r:"Isaiah 41:13"},
+  {t:"Delight yourself in the Lord, and he will give you the desires of your heart.",r:"Psalm 37:4"},
+  {t:"The Lord is near to all who call on him, to all who call on him in truth.",r:"Psalm 145:18"},
+  {t:"Be still, and know that I am God.",r:"Psalm 46:10"},
+  {t:"God is our refuge and strength, an ever-present help in trouble.",r:"Psalm 46:1"},
+  {t:"Ask and it will be given to you; seek and you will find; knock and the door will be opened to you.",r:"Matthew 7:7"},
+  {t:"For where two or three gather in my name, there am I with them.",r:"Matthew 18:20"},
+  {t:"The Lord is faithful, and he will strengthen you and protect you.",r:"2 Thessalonians 3:3"},
+  {t:"Have I not commanded you? Be strong and courageous. Do not be frightened, and do not be dismayed, for the Lord your God is with you wherever you go.",r:"Joshua 1:9"},
+  {t:"Taste and see that the Lord is good; blessed is the one who takes refuge in him.",r:"Psalm 34:8"},
+  {t:"And my God will meet all your needs according to the riches of his glory in Christ Jesus.",r:"Philippians 4:19"},
+  {t:"She is more precious than rubies; nothing you desire can compare with her.",r:"Proverbs 3:15"},
+  {t:"The Lord your God is in your midst, a mighty one who will save; he will rejoice over you with gladness; he will quiet you by his love.",r:"Zephaniah 3:17"},
+  {t:"Lo, children are a heritage of the Lord; and the fruit of the womb is his reward.",r:"Psalm 127:3"},
+  {t:"I lift up my eyes to the mountains — where does my help come from? My help comes from the Lord, the Maker of heaven and earth.",r:"Psalm 121:1–2"},
+  {t:"Two are better than one, because they have a good return for their labor. If either of them falls down, one can help the other up.",r:"Ecclesiastes 4:9–10"},
+  {t:"Charm is deceptive, and beauty is fleeting; but a woman who fears the Lord is to be praised.",r:"Proverbs 31:30"},
+  {t:"The grass withers and the flowers fall, but the word of our God endures forever.",r:"Isaiah 40:8"},
+  {t:"God is not unjust; he will not forget your work and the love you have shown him.",r:"Hebrews 6:10"},
+  {t:"In the same way, the Spirit helps us in our weakness. We do not know what we ought to pray for, but the Spirit himself intercedes for us.",r:"Romans 8:26"},
+  {t:"This is the day that the Lord has made; let us rejoice and be glad in it.",r:"Psalm 118:24"},
+  {t:"Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.",r:"Colossians 3:23"},
+  {t:"So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you.",r:"Isaiah 41:10"},
+  {t:"The Lord bless you and keep you.",r:"Numbers 6:24"},
+  {t:"For this child I prayed, and the Lord has granted me my petition that I made to him.",r:"1 Samuel 1:27"},
+  {t:"I thank my God every time I remember you.",r:"Philippians 1:3"},
+  {t:"She watches over the affairs of her household and does not eat the bread of idleness.",r:"Proverbs 31:27"},
+  {t:"Create in me a pure heart, O God, and renew a steadfast spirit within me.",r:"Psalm 51:10"},
+  {t:"Weeping may endure for a night, but joy comes in the morning.",r:"Psalm 30:5"},
+  {t:"The Lord makes firm the steps of the one who delights in him; though he may stumble, he will not fall, for the Lord upholds him with his hand.",r:"Psalm 37:23–24"},
+  {t:"Her children arise and call her blessed; her husband also, and he praises her.",r:"Proverbs 31:28"},
+  {t:"For the Lord your God is a merciful God; he will not abandon or destroy you.",r:"Deuteronomy 4:31"},
+  {t:"Surely goodness and love will follow me all the days of my life, and I will dwell in the house of the Lord forever.",r:"Psalm 23:6"},
+  {t:"As a mother comforts her child, so will I comfort you.",r:"Isaiah 66:13"},
+  {t:"The Lord is righteous in all his ways and faithful in all he does. The Lord is near to all who call on him.",r:"Psalm 145:17–18"},
+  {t:"Let the morning bring me word of your unfailing love, for I have put my trust in you.",r:"Psalm 143:8"},
+  {t:"I have learned, in whatever state I am, to be content. I can do all things through Christ who strengthens me.",r:"Philippians 4:11, 13"},
+  {t:"Yet I am always with you; you hold me by my right hand.",r:"Psalm 73:23"},
+  {t:"Give thanks to the Lord, for he is good; his love endures forever.",r:"Psalm 107:1"},
+  {t:"He will not let your foot slip — he who watches over you will not slumber.",r:"Psalm 121:3"},
+  {t:"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.",r:"John 3:16"},
+  {t:"Jesus said, 'I am the resurrection and the life. The one who believes in me will live, even though they die.'",r:"John 11:25"},
+  {t:"The name of the Lord is a fortified tower; the righteous run to it and are safe.",r:"Proverbs 18:10"},
+  {t:"My grace is sufficient for you, for my power is made perfect in weakness.",r:"2 Corinthians 12:9"},
+  {t:"For I am convinced that neither death nor life, neither angels nor demons, neither the present nor the future, nor any powers, neither height nor depth, nor anything else in all creation, will be able to separate us from the love of God.",r:"Romans 8:38–39"},
+  {t:"Rejoice in the Lord always. I will say it again: Rejoice!",r:"Philippians 4:4"},
+  {t:"The Lord is my portion; therefore I will wait for him.",r:"Lamentations 3:24"},
+  {t:"He has made everything beautiful in its time.",r:"Ecclesiastes 3:11"},
 ];
 
-// ── DATA ─────────────────────────────────────────────────────────────────────
+// ─── WEEKLY PLAN ──────────────────────────────────────────────────────────────
 const DAYS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 const PLAN = [
   {type:'strength', label:'Strength', icon:'💪'},
-  {type:'cardio',   label:'Walk/Ruck', icon:'🚶'},
-  {type:'yoga',     label:'Yoga',      icon:'🧘'},
-  {type:'strength', label:'Strength',  icon:'💪'},
-  {type:'swim',     label:'Swim',      icon:'🏊'},
-  {type:'cardio',   label:'Active',    icon:'🎾'},
-  {type:'rest',     label:'Rest',      icon:'😌'},
+  {type:'cardio',   label:'Cardio',   icon:'🏊'},
+  {type:'yoga',     label:'Yoga',     icon:'🧘'},
+  {type:'strength', label:'Strength', icon:'💪'},
+  {type:'cardio',   label:'Cardio',   icon:'🚶'},
+  {type:'sport',    label:'Sport',    icon:'⚽'},
+  {type:'rest',     label:'Rest',     icon:'😌'},
 ];
-const TARGETS = {strength:2, yoga:1, cardio:2, swim:1};
 
-function getTrimesterInfo(week) {
+function getTrimInfo(week) {
   week = parseInt(week)||6;
   if (week <= 13) return {
-    trimester: 'First trimester',
-    tip: `Week ${week}: Your body is working hard — blood volume is increasing and hormones are surging. It's normal to feel tired or nauseous. Every workout you do is a gift to you and your baby.`,
-    restrictions: [
-      'Keep core temperature below 102°F — avoid hot yoga or saunas',
-      'Never hold your breath during lifting (Valsalva maneuver)',
-      'Stay well hydrated — blood volume increases ~50% in pregnancy',
-      'Rest on days with strong nausea or extreme fatigue',
-      week>=10 ? 'Start practicing pelvic floor exercises (kegels) daily' : null
+    trimester:'First trimester',
+    tip:`Week ${week}: Your body is doing something extraordinary — growing a new life from scratch. Fatigue, nausea, and emotional shifts are completely normal right now. Every bit of movement you do is meaningful and beneficial.`,
+    restrictions:[
+      'Keep core temperature below 102°F — avoid hot yoga, saunas, or overheating',
+      'Never hold your breath during lifting — exhale on every exertion',
+      'Stay well hydrated throughout — blood volume increases ~50% in pregnancy',
+      'Rest freely on days with strong nausea or extreme fatigue — this is always the right call',
+      week>=10?'Begin daily pelvic floor exercises — 3 sets of 10 slow kegel holds':null,
     ].filter(Boolean)
   };
   if (week <= 26) return {
-    trimester: 'Second trimester',
-    tip: `Week ${week}: Welcome to the golden trimester! Energy often improves now. Your belly is growing — time to start modifying exercises that put pressure on your abdomen.`,
-    restrictions: [
-      'Avoid lying flat on back for more than a few minutes (compresses vena cava)',
-      'No crunches, sit-ups, or traditional planks',
-      'Avoid deep twists that compress the belly',
-      'Skip contact sports or activities with fall risk',
-      'Stop if you feel dizzy, short of breath, or pelvic pain',
-      week>=20 ? 'Consider a pregnancy support belt for longer workouts' : null
+    trimester:'Second trimester',
+    tip:`Week ${week}: Welcome to the golden trimester — energy often returns and you may feel more like yourself. Your belly is growing beautifully. Start modifying any exercise that puts compression or strain on your abdomen.`,
+    restrictions:[
+      'Avoid lying flat on your back for more than a few minutes (can compress the vena cava)',
+      'No crunches, sit-ups, or traditional planks — use dead bugs and bird dogs instead',
+      'Avoid deep twists compressing the belly — open/thoracic twists are fine',
+      'Avoid contact sports and anything with a meaningful fall risk',
+      'Stop immediately for: dizziness, shortness of breath, chest pain, or pelvic pressure',
+      week>=20?'Consider a pregnancy support belt for longer workouts and walks':null,
     ].filter(Boolean)
   };
   return {
-    trimester: 'Third trimester',
-    tip: `Week ${week}: You are doing something extraordinary. Listen to your body above all else — shorter workouts are just as valuable. Swimming is your best friend right now.`,
-    restrictions: [
-      'No supine exercises — use side-lying or seated/standing alternatives',
-      'Limit overhead pressing to very light weights',
+    trimester:'Third trimester',
+    tip:`Week ${week}: You are doing something extraordinary every single day just by carrying this baby. Shorter workouts are just as valuable as longer ones. Swimming is your best friend right now — buoyancy feels like relief.`,
+    restrictions:[
+      'No supine exercises at all — use side-lying or seated/standing alternatives for everything',
+      'Limit overhead pressing to very light weights only',
       'No jumping, running, or high-impact movement',
       'Walk and ruck only on flat, stable terrain',
-      'Shorten workouts freely — 20-30 min is plenty',
-      'Watch for: severe swelling, headaches, vision changes',
-      week>=36 ? 'No yoga inversions — focus on breath, pelvic floor, and rest' : null
+      'Freely shorten workouts — 20–30 minutes is completely sufficient',
+      'Stop for: severe swelling, headache, vision changes, or decreased fetal movement',
+      week>=36?'No yoga inversions at all — focus entirely on breath, pelvic floor, and restorative rest':null,
     ].filter(Boolean)
   };
 }
 
 function getSmartSuggestion(week, completed, activeDay) {
-  const info = getTrimesterInfo(week);
-  const counts = {strength:0, yoga:0, cardio:0, swim:0};
-  Object.entries(completed).forEach(([day, type]) => { if(counts[type]!==undefined) counts[type]++; });
+  const counts = {strength:0,cardio:0,yoga:0,sport:0,rest:0};
+  Object.values(completed).forEach(t => { if(counts[t]!==undefined) counts[t]++; });
   const daysLeft = 6 - activeDay;
   const missing = [];
   if (counts.strength < 2) missing.push(`${2-counts.strength} strength session${2-counts.strength>1?'s':''}`);
   if (counts.yoga < 1) missing.push('yoga');
-  if (counts.swim < 1) missing.push('swim');
-  if (counts.cardio < 2) missing.push(`${2-counts.cardio} active day${2-counts.cardio>1?'s':''}`);
-
-  const todayDefault = PLAN[activeDay];
-  if (missing.length === 0) return `You've hit all your goals this week! 🎉 Today is a free choice — enjoy ${todayDefault.label.toLowerCase()} or take extra rest.`;
-  if (daysLeft <= missing.length) return `To hit your weekly goals, today needs to be ${missing[0]}. You've got this! 💪`;
-  return `Today's plan: ${todayDefault.label}. Still to go this week: ${missing.join(', ')}.`;
+  if (counts.cardio < 2) missing.push(`${2-counts.cardio} cardio/swim session${2-counts.cardio>1?'s':''}`);
+  const plan = PLAN[activeDay];
+  if (plan.type==='rest') return "Today is your rest day 🌿 Rest IS training. Your body is building your baby — honor it.";
+  if (plan.type==='sport') return "Free activity day ⚽ Tennis, hiking, golf, dancing — whatever brings you joy. Log it when done.";
+  if (missing.length===0) return `You've hit all your weekly goals! 🎉 Today is completely open — enjoy your ${plan.label.toLowerCase()} or take bonus rest.`;
+  if (daysLeft > 0 && daysLeft <= missing.length) return `To finish your week strong, today really needs to be ${missing[0]}. You can do this! 💪`;
+  return `Today's plan: ${plan.label}. Still to complete this week: ${missing.join(', ')}.`;
 }
 
-// ── STATE ─────────────────────────────────────────────────────────────────────
+// ─── STATE ────────────────────────────────────────────────────────────────────
 let S = {
-  week: 6,
-  initialized: false,
-  completed: {},   // { dayIndex: workoutType }
-  checkin: {},
-  lastWorkout: null,
-  activeDay: Math.max(0,(new Date().getDay()+6)%7),
-  setupWeek: 6,
-  modalWeek: 6
+  week:6, initialized:false,
+  completed:{},  // { dayIndex: workoutType }
+  checkin:{},
+  lastWorkout:null,
+  activeDay:Math.max(0,(new Date().getDay()+6)%7),
+  setupWk:6, modalWk:6,
 };
+function save(){ try{localStorage.setItem('ms_final_v4',JSON.stringify(S));}catch(e){} }
+function load(){ try{const d=localStorage.getItem('ms_final_v4');if(d)S={...S,...JSON.parse(d)};}catch(e){} }
 
-function save() { try { localStorage.setItem('mama_strong_v3', JSON.stringify(S)); } catch(e){} }
-function load() {
-  try {
-    const d = localStorage.getItem('mama_strong_v3');
-    if (d) { const p = JSON.parse(d); S = {...S, ...p}; }
-  } catch(e){}
+// ─── VERSE ────────────────────────────────────────────────────────────────────
+function loadVerse(){
+  const day=Math.floor((Date.now()-new Date(new Date().getFullYear(),0,0))/86400000);
+  const v=VERSES[day%VERSES.length];
+  document.getElementById('verse-text').textContent=v.t;
+  document.getElementById('verse-ref').textContent='— '+v.r;
 }
 
-// ── VERSE ─────────────────────────────────────────────────────────────────────
-function loadVerse() {
-  const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(),0,0)) / 86400000);
-  const verse = VERSES[dayOfYear % VERSES.length];
-  document.getElementById('verse-text').textContent = verse.text;
-  document.getElementById('verse-ref').textContent = '— ' + verse.ref;
-}
+// ─── SETUP ────────────────────────────────────────────────────────────────────
+function adjSetup(d){ S.setupWk=Math.max(4,Math.min(42,(S.setupWk||6)+d)); document.getElementById('setup-wk').textContent=S.setupWk; document.getElementById('setup-tri').textContent=getTrimInfo(S.setupWk).trimester; }
+function startApp(){ S.week=S.setupWk||6; S.initialized=true; save(); document.getElementById('screen-setup').classList.remove('active'); document.getElementById('screen-app').classList.add('active'); renderAll(); }
 
-// ── WEEK SETUP ────────────────────────────────────────────────────────────────
-function adjustSetupWeek(d) {
-  S.setupWeek = Math.max(4, Math.min(42, (S.setupWeek||6) + d));
-  document.getElementById('setup-week-num').textContent = S.setupWeek;
-  document.getElementById('setup-trimester-label').textContent = getTrimesterInfo(S.setupWeek).trimester;
-}
-function startApp() {
-  S.week = S.setupWeek || 6;
-  S.initialized = true;
-  save();
-  document.getElementById('screen-setup').classList.remove('active');
-  document.getElementById('screen-app').classList.add('active');
-  renderAll();
-}
+// ─── MODAL ────────────────────────────────────────────────────────────────────
+function openModal(){ S.modalWk=S.week; document.getElementById('modal-wk').textContent=S.week; document.getElementById('week-modal').classList.add('open'); }
+function closeModal(){ document.getElementById('week-modal').classList.remove('open'); }
+function adjModal(d){ S.modalWk=Math.max(4,Math.min(42,(S.modalWk||6)+d)); document.getElementById('modal-wk').textContent=S.modalWk; }
+function saveWeek(){ S.week=S.modalWk; closeModal(); save(); renderAll(); }
 
-// ── WEEK MODAL ────────────────────────────────────────────────────────────────
-function openWeekModal() { S.modalWeek = S.week; document.getElementById('modal-week-num').textContent = S.week; document.getElementById('week-modal').classList.add('open'); }
-function closeWeekModal() { document.getElementById('week-modal').classList.remove('open'); }
-function adjustModalWeek(d) { S.modalWeek = Math.max(4,Math.min(42,(S.modalWeek||6)+d)); document.getElementById('modal-week-num').textContent = S.modalWeek; }
-function saveWeek() { S.week = S.modalWeek; closeWeekModal(); save(); renderAll(); }
-
-// ── TABS ──────────────────────────────────────────────────────────────────────
-function switchTab(name) {
+// ─── TABS ─────────────────────────────────────────────────────────────────────
+function switchTab(name){
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('panel-'+name).classList.add('active');
   document.getElementById('tab-'+name).classList.add('active');
-  if (name==='workout') renderWorkoutPanel();
+  if(name==='workout') renderWorkoutPanel();
 }
 
-// ── RENDER ALL ────────────────────────────────────────────────────────────────
-function renderAll() {
-  const info = getTrimesterInfo(S.week);
-  document.getElementById('week-chip-label').textContent = 'Week ' + S.week;
-  document.getElementById('settings-week-sub').textContent = 'Week ' + S.week + ' · ' + info.trimester;
-  renderWeekSummary(info);
-  renderDayGrid();
-  renderTipCard(info);
-  renderRestrictions(info);
-  renderSuggestion();
-  renderWorkoutPanel();
+// ─── RENDER ───────────────────────────────────────────────────────────────────
+function renderAll(){
+  const info=getTrimInfo(S.week);
+  document.getElementById('wk-chip').textContent='Week '+S.week;
+  document.getElementById('settings-wk-sub').textContent='Week '+S.week+' · '+info.trimester;
+  renderSummary(); renderDayGrid(); renderTip(info); renderRestrictions(info); renderSuggestion(); renderWorkoutPanel();
 }
 
-function renderWeekSummary(info) {
-  const counts = {strength:0, yoga:0, cardio:0, swim:0};
-  Object.values(S.completed).forEach(type => { if(counts[type]!==undefined) counts[type]++; });
-  const items = [
-    {key:'strength', label:'💪 Strength', target:2},
-    {key:'yoga',     label:'🧘 Yoga',     target:1},
-    {key:'cardio',   label:'🚶 Active',   target:2},
-    {key:'swim',     label:'🏊 Swim',     target:1},
+function renderSummary(){
+  const counts={strength:0,cardio:0,yoga:0,sport:0,rest:0};
+  Object.values(S.completed).forEach(t=>{if(counts[t]!==undefined)counts[t]++;});
+  const items=[
+    {k:'strength',l:'💪 Strength',tgt:2},
+    {k:'cardio',  l:'🏊 Cardio',  tgt:2},
+    {k:'yoga',    l:'🧘 Yoga',    tgt:1},
+    {k:'sport',   l:'⚽ Sport',   tgt:null},
+    {k:'rest',    l:'😌 Rest',    tgt:null},
   ];
-  document.getElementById('week-summary').innerHTML = items.map(it => `
-    <div class="summary-pill ${counts[it.key]>=it.target?'done':''}">
-      <div class="summary-count">${counts[it.key]}/${it.target}</div>
-      <div class="summary-name">${it.label}</div>
-    </div>`).join('');
+  document.getElementById('week-summary').innerHTML=items.map(it=>{
+    const done=it.tgt?counts[it.k]>=it.tgt:counts[it.k]>0;
+    const label=it.tgt?`${counts[it.k]}/${it.tgt}`:(counts[it.k]>0?'✓':'–');
+    return `<div class="sum-pill ${done?'done':''}"><div class="sum-count">${label}</div><div class="sum-name">${it.l}</div></div>`;
+  }).join('');
 }
 
-function renderDayGrid() {
-  const today = S.activeDay;
-  document.getElementById('day-grid').innerHTML = DAYS.map((d,i) => {
-    const plan = PLAN[i];
-    const doneType = S.completed[i];
-    const isDone = doneType !== undefined;
-    const isToday = i === today;
-    const isRest = plan.type === 'rest';
-    return `<div class="day-cell ${isDone?'done':''} ${isToday?'today':''} ${isRest?'rest':''}" onclick="setActiveDay(${i})">
-      <div class="day-name">${d}</div>
-      <div class="day-emoji">${isDone ? '✅' : plan.icon}</div>
-      <div class="day-type-label">${isDone ? doneType : plan.label}</div>
-      ${isToday && !isDone ? '<div class="day-check">Today</div>' : ''}
+function renderDayGrid(){
+  const today=S.activeDay;
+  document.getElementById('day-grid').innerHTML=DAYS.map((d,i)=>{
+    const plan=PLAN[i], doneType=S.completed[i], isDone=doneType!==undefined;
+    return `<div class="day-cell ${isDone?'done':''} ${i===today?'today':''} ${plan.type==='rest'?'rest-day':''}" onclick="setDay(${i})">
+      <div class="dc-name">${d}</div>
+      <div class="dc-emoji">${isDone?'✅':plan.icon}</div>
+      <div class="dc-type">${isDone?doneType:plan.label}</div>
+      ${i===today&&!isDone?'<div class="dc-today">Today</div>':''}
     </div>`;
   }).join('');
 }
 
-function renderTipCard(info) {
-  document.getElementById('tip-card').innerHTML = `<p><strong>${info.trimester} · Week ${S.week}:</strong> ${info.tip.replace(/^Week \d+: /,'')}</p>`;
+function renderTip(info){ document.getElementById('tip-card').innerHTML=`<p><strong>${info.trimester} · Week ${S.week}:</strong> ${info.tip.replace(/^Week \d+: /,'')}</p>`; }
+
+function renderRestrictions(info){
+  const html=`<div class="restriction-title">⚕️ Safety Guidelines · Week ${S.week}</div>`+info.restrictions.map(r=>`<div class="restriction-row"><div class="rdot"></div><span>${r}</span></div>`).join('');
+  document.getElementById('restriction-card').innerHTML=html;
+  document.getElementById('settings-restrictions').innerHTML=html;
 }
 
-function renderRestrictions(info) {
-  const html = `<div class="restriction-title">⚕️ Safety Guidelines · Week ${S.week}</div>` +
-    info.restrictions.map(r=>`<div class="restriction-item"><div class="restriction-dot"></div><span>${r}</span></div>`).join('');
-  document.getElementById('restriction-card').innerHTML = html;
-  document.getElementById('settings-restrictions').innerHTML = html;
+function renderSuggestion(){ document.getElementById('smart-text').textContent=getSmartSuggestion(S.week,S.completed,S.activeDay); }
+
+function renderWorkoutPanel(){
+  const ph=document.getElementById('wo-placeholder'), ld=document.getElementById('wo-loading'), out=document.getElementById('wo-output');
+  if(S.lastWorkout){ ph.style.display='none'; ld.style.display='none'; out.style.display='block'; out.innerHTML=buildWorkoutHTML(S.lastWorkout); }
+  else { ph.style.display='block'; ld.style.display='none'; out.style.display='none'; }
 }
 
-function renderSuggestion() {
-  const text = getSmartSuggestion(S.week, S.completed, S.activeDay);
-  document.getElementById('suggestion-text').textContent = text;
-}
+function setDay(i){ S.activeDay=i; save(); renderDayGrid(); renderSuggestion(); }
 
-function renderWorkoutPanel() {
-  const placeholder = document.getElementById('workout-placeholder');
-  const loading = document.getElementById('workout-loading');
-  const output = document.getElementById('workout-output');
-  if (S.lastWorkout) {
-    placeholder.style.display = 'none';
-    loading.style.display = 'none';
-    output.style.display = 'block';
-    output.innerHTML = buildWorkoutHTML(S.lastWorkout);
-  } else {
-    placeholder.style.display = 'block';
-    loading.style.display = 'none';
-    output.style.display = 'none';
-  }
-}
-
-function setActiveDay(i) { S.activeDay = i; save(); renderDayGrid(); renderSuggestion(); }
-
-// ── CHECK-IN ──────────────────────────────────────────────────────────────────
-function sel(el, q, val) {
+// ─── CHECK-IN ─────────────────────────────────────────────────────────────────
+function sel(el,q,val){
   el.closest('.q-opts').querySelectorAll('.q-opt').forEach(o=>o.classList.remove('selected'));
   el.classList.add('selected');
-  S.checkin[q] = val;
-  const required = ['energy','nausea','soreness','preference'];
-  document.getElementById('gen-btn').disabled = required.filter(k=>S.checkin[k]).length < required.length;
+  S.checkin[q]=val;
+  const req=['energy','nausea','pelvic','sleep','mood','preference'];
+  document.getElementById('gen-btn').disabled=req.filter(k=>S.checkin[k]).length<req.length;
 }
 
-// ── GENERATE WORKOUT ──────────────────────────────────────────────────────────
-async function generateWorkout() {
-  const btn = document.getElementById('gen-btn');
-  btn.disabled = true;
-  btn.textContent = 'Generating…';
-  S.lastWorkout = null;
+// ─── GENERATE ─────────────────────────────────────────────────────────────────
+async function generateWorkout(){
+  const btn=document.getElementById('gen-btn');
+  btn.disabled=true; btn.textContent='Generating…'; S.lastWorkout=null;
   switchTab('workout');
-  document.getElementById('workout-placeholder').style.display = 'none';
-  document.getElementById('workout-loading').style.display = 'block';
-  document.getElementById('workout-output').style.display = 'none';
+  document.getElementById('wo-placeholder').style.display='none';
+  document.getElementById('wo-loading').style.display='block';
+  document.getElementById('wo-output').style.display='none';
 
-  const dayPlan = PLAN[S.activeDay];
-  const week = parseInt(S.week)||6;
-  const info = getTrimesterInfo(week);
+  const dayPlan=PLAN[S.activeDay], week=parseInt(S.week)||6, info=getTrimInfo(week);
+  const counts={strength:0,cardio:0,yoga:0};
+  Object.values(S.completed).forEach(t=>{if(counts[t]!==undefined)counts[t]++;});
+  const weekHistory=Object.entries(S.completed).map(([d,t])=>`${DAYS[d]} (${t})`);
 
-  // Build week history
-  const weekHistory = Object.entries(S.completed).map(([day, type]) => `${DAYS[day]} (${type})`);
-
-  try {
-    const res = await fetch('/api/generate-workout', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        week,
-        trimester: info.trimester,
-        dayLabel: dayPlan.label,
-        dayOfWeek: DAYS[S.activeDay],
-        checkin: S.checkin,
-        restrictions: info.restrictions,
-        weekHistory
-      })
-    });
-    if (!res.ok) throw new Error('Server error ' + res.status);
-    const data = await res.json();
-    if (data.error) throw new Error(data.error);
-
-    const parsed = parseWorkoutText(data.text, dayPlan);
-    S.lastWorkout = parsed;
-    save();
-    renderWorkoutPanel();
-
-  } catch(e) {
-    document.getElementById('workout-loading').style.display = 'none';
-    document.getElementById('workout-placeholder').style.display = 'block';
-    document.getElementById('workout-placeholder').innerHTML = `
-      <div class="workout-placeholder-icon">⚠️</div>
-      <h3>Something went wrong</h3>
-      <p>${e.message}</p>
-      <button class="go-checkin-btn" onclick="switchTab('checkin')">Try again</button>`;
+  // Sport day — no API needed
+  if(dayPlan.type==='sport'){
+    S.lastWorkout={isSport:true};
+    save(); btn.textContent='Generate today\'s workout →'; renderWorkoutPanel(); return;
   }
 
-  btn.textContent = 'Generate today\'s workout →';
-  btn.disabled = false;
+  try{
+    const res=await fetch('/api/generate-workout',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        week, trimester:info.trimester, dayType:dayPlan.type, dayLabel:dayPlan.label,
+        dayOfWeek:DAYS[S.activeDay], checkin:S.checkin, restrictions:info.restrictions,
+        weekHistory, weekCounts:counts
+      })
+    });
+    if(!res.ok) throw new Error('Server error '+res.status);
+    const data=await res.json();
+    if(data.error) throw new Error(data.error);
+    S.lastWorkout=parseWorkout(data.text,dayPlan);
+    save(); renderWorkoutPanel();
+  }catch(e){
+    document.getElementById('wo-loading').style.display='none';
+    document.getElementById('wo-placeholder').style.display='block';
+    document.getElementById('wo-placeholder').innerHTML=`<div class="wp-icon">⚠️</div><h3 class="wp-title">Something went wrong</h3><p class="wp-sub">${e.message}</p><button class="wp-btn" onclick="switchTab('checkin')">Try again</button>`;
+    switchTab('workout');
+  }
+  btn.textContent='Generate today\'s workout →'; btn.disabled=false;
 }
 
-// ── PARSE WORKOUT TEXT ────────────────────────────────────────────────────────
-function parseWorkoutText(text, dayPlan) {
-  const lines = text.trim().split('\n');
-  const firstLine = lines[0];
-  const parts = firstLine.includes('|') ? firstLine.split('|').map(s=>s.trim()) : [dayPlan.label, '45 min', 'Moderate'];
+// ─── PARSE WORKOUT ────────────────────────────────────────────────────────────
+function parseWorkout(text,dayPlan){
+  const lines=text.trim().split('\n');
+  const first=lines[0];
+  let title=dayPlan.label, meta='45 min · Moderate', bodyStart=0;
+  if(first.includes('|')){ const p=first.split('|').map(s=>s.trim()); title=p[0]||dayPlan.label; meta=p.slice(1).join(' · '); bodyStart=1; }
+  const body=lines.slice(bodyStart).join('\n').trim();
+  const rx=/---\s*(.+?)\s*---/g; const headers=[]; let m;
+  while((m=rx.exec(body))!==null) headers.push(m[1].trim());
+  const parts=body.split(/---\s*.+?\s*---/);
+  if(headers.length===0) return {title,meta,typeLabel:dayPlan.label,typeBadge:dayPlan.type,sections:[],rawFallback:body};
 
-  const body = lines.slice(firstLine.includes('|') ? 1 : 0).join('\n').trim();
-  const sectionRegex = /---\s*(.+?)\s*---/g;
-  const splitParts = body.split(/---\s*.+?\s*---/);
-  const headers = [];
-  let m;
-  while ((m = sectionRegex.exec(body)) !== null) headers.push(m[1].trim());
+  const sections=headers.map((h,i)=>{
+    const raw=(parts[i+1]||'').trim();
+    const metaM=h.match(/\((.+?)\)/); const smeta=metaM?metaM[1]:'';
+    const cleanH=h.replace(/\(.+?\)/,'').trim(); const tl=h.toLowerCase();
+    let icon,iconClass,type;
+    if(tl.includes('warm'))                         {icon='🔥';iconClass='si-warm';type='bullets';}
+    else if(tl.includes('cool')||tl.includes('down')){icon='🌊';iconClass='si-cool';type='bullets';}
+    else if(tl.includes('safe')||tl.includes('note')){icon='🛡️';iconClass='si-safety';type='safety';}
+    else if(tl.includes('nourish'))                  {icon='🥗';iconClass='si-nourish';type='bullets';}
+    else if(tl.includes('body')||tl.includes('care')) {icon='💆';iconClass='si-body';type='bullets';}
+    else if(tl.includes('pelv')||tl.includes('floor')){icon='🌸';iconClass='si-pelvis';type='bullets';}
+    else if(tl.includes('mind')||tl.includes('mental')){icon='🧠';iconClass='si-mind';type='bullets';}
+    else                                              {icon='💪';iconClass='si-main';type='exercises';}
 
-  const sections = headers.map((h, i) => {
-    const rawBody = (splitParts[i+1]||'').trim();
-    const metaMatch = h.match(/\((.+?)\)/);
-    const meta = metaMatch ? metaMatch[1] : '';
-    const cleanTitle = h.replace(/\(.+?\)/,'').trim();
-    const tl = h.toLowerCase();
-    let icon, iconClass, type;
-    if (tl.includes('warm'))      { icon='🔥'; iconClass='ic-warmup'; type='bullets'; }
-    else if (tl.includes('cool') || tl.includes('stretch')) { icon='🌊'; iconClass='ic-cool';   type='bullets'; }
-    else if (tl.includes('safe')) { icon='🛡️'; iconClass='ic-safety'; type='safety'; }
-    else                          { icon='💪'; iconClass='ic-main';   type='exercises'; }
-
-    let items = [];
-    if (type === 'exercises') {
-      const blines = rawBody.split(/\n+/);
-      let cur = null, curLines = [];
-      const flush = () => {
-        if (!cur) return;
-        let sets='', noteArr=[];
-        curLines.forEach((l,i) => {
-          if (i===0 && l.match(/\d+.*(sets?|reps?|rounds?|breaths?|min|sec|×|x\s*\d)/i)) sets=l;
+    let items=[];
+    if(type==='exercises'){
+      const blines=raw.split(/\n+/); let cur=null,curLines=[];
+      const flush=()=>{
+        if(!cur)return;
+        let sets='',noteArr=[],alt='';
+        curLines.forEach((l,idx)=>{
+          if(l.startsWith('ALT:')) alt=l.replace(/^ALT:\s*/,'');
+          else if(idx===0&&l.match(/\d+.*(sets?|reps?|rounds?|breaths?|min|sec|×|x\s*\d)/i)) sets=l;
           else noteArr.push(l);
         });
-        items.push({name:cur.replace(/\*\*/g,''), sets, note:noteArr.join(' ').replace(/\*\*/g,'')});
-        cur=null; curLines=[];
+        items.push({name:cur.replace(/\*\*/g,''),sets,note:noteArr.join(' ').replace(/\*\*/g,''),alt});
+        cur=null;curLines=[];
       };
-      blines.forEach(l => {
-        const t = l.trim();
-        if (!t) return;
-        const bold = t.match(/^\*\*(.+?)\*\*/);
-        if (bold) { flush(); cur=bold[1]; }
-        else if (cur) curLines.push(t.replace(/^[•\-]\s*/,'').replace(/\*\*/g,''));
-        else { items.push({name:'',sets:'',note:t.replace(/^[•\-\*]\s*/,'').replace(/\*\*/g,'')}); }
+      blines.forEach(l=>{
+        const t=l.trim();if(!t)return;
+        const bold=t.match(/^\*\*(.+?)\*\*/);
+        if(bold){flush();cur=bold[1];}
+        else if(cur) curLines.push(t.replace(/^[•\-]\s*/,'').replace(/\*\*/g,''));
+        else items.push({name:'',sets:'',note:t.replace(/^[•\-\*]\s*/,'').replace(/\*\*/g,''),alt:''});
       });
       flush();
-      items = items.filter(it=>it.name||it.note);
-    } else if (type === 'safety') {
-      items = rawBody.split(/\n+/).filter(l=>l.trim()).map(l=>l.replace(/^\d+\.\s*/,'').replace(/\*\*/g,'').trim()).filter(Boolean);
-    } else {
-      items = rawBody.split(/\n+/).filter(l=>l.trim()).map(l=>l.replace(/^[•\-\*]\s*/,'').replace(/\*\*/g,'').trim()).filter(Boolean);
+      items=items.filter(it=>it.name||it.note);
+    }else if(type==='safety'){
+      items=raw.split(/\n+/).filter(l=>l.trim()).map(l=>l.replace(/^\d+[\.\)]\s*/,'').replace(/\*\*/g,'').trim()).filter(Boolean);
+    }else{
+      items=raw.split(/\n+/).filter(l=>l.trim()).map(l=>l.replace(/^[•\-\*]\s*/,'').replace(/\*\*/g,'').trim()).filter(Boolean);
     }
-    return { title:cleanTitle, meta, icon, iconClass, type, items };
+    return{title:cleanH,meta:smeta,icon,iconClass,type,items};
   });
-
-  return {
-    title: parts[0] || dayPlan.label,
-    meta: parts.slice(1).join(' · '),
-    typeLabel: dayPlan.label,
-    typeBadge: dayPlan.type,
-    sections
-  };
+  return{title,meta,typeLabel:dayPlan.label,typeBadge:dayPlan.type,sections};
 }
 
-// ── BUILD WORKOUT HTML ────────────────────────────────────────────────────────
-function buildWorkoutHTML(w) {
-  const gradients = {
-    strength: 'linear-gradient(135deg,#2D7A5F 0%,#1A5C44 100%)',
-    yoga:     'linear-gradient(135deg,#7C3AED 0%,#5B21B6 100%)',
-    cardio:   'linear-gradient(135deg,#059669 0%,#047857 100%)',
-    swim:     'linear-gradient(135deg,#0284C7 0%,#075985 100%)',
-    rest:     'linear-gradient(135deg,#6B7280 0%,#4B5563 100%)',
-  };
-  const grad = gradients[w.typeBadge] || gradients.strength;
-  const metaParts = w.meta ? w.meta.split('·').map(s=>s.trim()).filter(Boolean) : [];
+// ─── BUILD HTML ───────────────────────────────────────────────────────────────
+function buildWorkoutHTML(w){
+  if(w.isSport) return `
+    <div class="sport-card">
+      <div class="hero-type">Free Activity Day</div>
+      <div class="sport-title">Sport & Play ⚽</div>
+      <div class="sport-sub">Today is yours to enjoy. Play, move, have fun — then log it.</div>
+      <div class="sport-tips">
+        <div class="sport-tip">• Tennis, pickleball, golf, hiking, swimming for fun — all great choices</div>
+        <div class="sport-tip">• Stay hydrated and stop if you feel dizzy, short of breath, or any pelvic pressure</div>
+        <div class="sport-tip">• Avoid contact sports or activities with a meaningful fall risk</div>
+        <div class="sport-tip">• Movement that brings you joy is some of the best prenatal exercise there is</div>
+      </div>
+    </div>
+    <button class="log-btn" onclick="markComplete()">✓ Log this activity as complete</button>`;
 
-  let html = `
-    <div class="workout-hero" style="background:${grad}">
-      <div class="hero-type">${w.typeLabel}</div>
-      <div class="hero-title">${w.title}</div>
-      <div class="hero-pills">${metaParts.map(p=>`<span class="hero-pill">${p}</span>`).join('')}</div>
-    </div>`;
+  const grads={strength:'linear-gradient(135deg,#2D7A5F,#1A5C44)',yoga:'linear-gradient(135deg,#7C3AED,#5B21B6)',cardio:'linear-gradient(135deg,#0284C7,#075985)',rest:'linear-gradient(135deg,#6B7280,#374151)'};
+  const grad=grads[w.typeBadge]||grads.strength;
+  const metaParts=w.meta?w.meta.split('·').map(s=>s.trim()).filter(Boolean):[];
+  const hero=`<div class="workout-hero" style="background:${grad}"><div class="hero-type">${w.typeLabel}</div><div class="hero-title">${w.title}</div><div class="hero-pills">${metaParts.map(p=>`<span class="hero-pill">${p}</span>`).join('')}</div></div>`;
 
-  (w.sections||[]).forEach(sec => {
-    let body = '';
-    if (sec.type === 'exercises') {
-      sec.items.forEach((ex,i) => {
-        if (!ex.name) {
-          body += `<div class="bullet-row"><div class="bullet-dot"></div><div>${ex.note}</div></div>`;
-        } else {
-          body += `<div class="ex-item">
-            <div class="ex-num">${i+1}</div>
-            <div class="ex-body">
-              <div class="ex-name">${ex.name}</div>
-              ${ex.sets?`<div class="ex-sets">${ex.sets}</div>`:''}
-              ${ex.note?`<div class="ex-note">${ex.note}</div>`:''}
-            </div>
-          </div>`;
-        }
+  if(!w.sections||w.sections.length===0) return hero+`<div class="wo-section"><div class="wo-sec-header"><div class="sec-icon si-main">💪</div><div><div class="sec-name">Your Workout</div></div></div><div class="wo-sec-body"><div style="font-size:14px;line-height:1.85;color:var(--g5);white-space:pre-wrap;">${w.rawFallback||''}</div></div></div><button class="complete-btn" onclick="markComplete()">✓ Mark as complete</button>`;
+
+  let html=hero, exN=0;
+  w.sections.forEach(sec=>{
+    let body='';
+    if(sec.type==='exercises'){
+      sec.items.forEach(ex=>{
+        if(!ex.name){ body+=`<div class="bullet-row"><div class="bdot"></div><div>${ex.note}</div></div>`; return; }
+        exN++;
+        const altId=`alt${exN}`;
+        body+=`<div class="ex-item"><div class="ex-top"><div class="ex-num">${exN}</div><div class="ex-body"><div class="ex-name">${ex.name}</div>${ex.sets?`<div class="ex-sets">${ex.sets}</div>`:''}<div class="ex-note">${ex.note}</div>${ex.alt?`<button class="ex-alt-btn" onclick="toggleAlt('${altId}',this)">Can't do this? See alternative ↓</button>`:''}</div></div>${ex.alt?`<div class="ex-alt-row" id="${altId}"><div class="ex-alt-label">Alternative</div><div class="ex-alt-text">${ex.alt}</div></div>`:''}</div>`;
       });
-    } else if (sec.type === 'safety') {
-      sec.items.forEach((item,i) => {
-        body += `<div class="safety-row"><div class="safety-num">${i+1}</div><div class="safety-text">${item}</div></div>`;
-      });
-    } else {
-      sec.items.forEach(item => {
-        body += `<div class="bullet-row"><div class="bullet-dot"></div><div>${item}</div></div>`;
-      });
+    }else if(sec.type==='safety'){
+      sec.items.forEach((item,i)=>{ body+=`<div class="safety-row"><div class="snum">${i+1}</div><div class="stext">${item}</div></div>`; });
+    }else{
+      sec.items.forEach(item=>{ body+=`<div class="bullet-row"><div class="bdot"></div><div>${item}</div></div>`; });
     }
-    html += `
-      <div class="workout-section">
-        <div class="workout-section-header">
-          <div class="section-icon-circle ${sec.iconClass}">${sec.icon}</div>
-          <div>
-            <div class="section-name">${sec.title}</div>
-            ${sec.meta?`<div class="section-dur">${sec.meta}</div>`:''}
-          </div>
-        </div>
-        <div class="workout-section-body">${body}</div>
-      </div>`;
+    html+=`<div class="wo-section"><div class="wo-sec-header"><div class="sec-icon ${sec.iconClass}">${sec.icon}</div><div><div class="sec-name">${sec.title}</div>${sec.meta?`<div class="sec-dur">${sec.meta}</div>`:''}</div></div><div class="wo-sec-body">${body}</div></div>`;
   });
-
-  html += `<button class="complete-btn" onclick="markComplete()">✓ Mark as complete</button>`;
+  html+=`<button class="complete-btn" onclick="markComplete()">✓ Mark as complete</button>`;
   return html;
 }
 
-// ── MARK COMPLETE ─────────────────────────────────────────────────────────────
-function markComplete() {
-  const dayPlan = PLAN[S.activeDay];
-  S.completed[S.activeDay] = dayPlan.type;
-  S.lastWorkout = null;
-  save();
-  renderAll();
-  switchTab('week');
-}
+function toggleAlt(id,btn){ const el=document.getElementById(id); el.classList.toggle('open'); btn.textContent=el.classList.contains('open')?'Hide alternative ↑':"Can't do this? See alternative ↓"; }
 
-function clearWorkout() { S.lastWorkout = null; save(); renderWorkoutPanel(); }
+// ─── COMPLETE / RESET ─────────────────────────────────────────────────────────
+function markComplete(){ S.completed[S.activeDay]=PLAN[S.activeDay].type; S.lastWorkout=null; save(); renderAll(); switchTab('week'); }
+function clearWorkout(){ S.lastWorkout=null; save(); renderWorkoutPanel(); }
+function resetWeek(){ if(!confirm('Clear all completed workouts for this week?'))return; S.completed={}; S.lastWorkout=null; save(); renderAll(); }
 
-async function resetWeek() {
-  if (!confirm('Clear all completed workouts for this week?')) return;
-  S.completed = {}; S.lastWorkout = null;
-  save(); renderAll();
-}
-
-// ── BOOT ──────────────────────────────────────────────────────────────────────
-load();
-loadVerse();
-
-if (!S.initialized) {
+// ─── BOOT ─────────────────────────────────────────────────────────────────────
+load(); loadVerse();
+if(!S.initialized){
+  S.setupWk=S.week||6;
+  document.getElementById('setup-wk').textContent=S.setupWk;
+  document.getElementById('setup-tri').textContent=getTrimInfo(S.setupWk).trimester;
   document.getElementById('screen-setup').classList.add('active');
-  S.setupWeek = S.week || 6;
-  document.getElementById('setup-week-num').textContent = S.setupWeek;
-  document.getElementById('setup-trimester-label').textContent = getTrimesterInfo(S.setupWeek).trimester;
-} else {
+}else{
   document.getElementById('screen-setup').classList.remove('active');
   document.getElementById('screen-app').classList.add('active');
   renderAll();
